@@ -1,0 +1,46 @@
+site_name: Carbon Java Documentation
+site_url: https://stratcube2.github.io/carbon-script/
+repo_url: https://github.com/stratcube2/carbon-script
+
+theme:
+  name: material
+  palette: 
+    - scheme: slate # Dark mode
+      primary: indigo
+      accent: indigo
+  features:
+    - navigation.tabs # Puts main sections in a top bar
+    - navigation.sections
+    - search.suggest
+    - content.code.copy
+
+nav:
+  - Home: index.md
+  - Getting Started:
+      - Your First Mod: getting-started/01_your_first_mod.md
+      - Folder Structure: getting-started/02_folder_structure.md
+      - Mod JSON: getting-started/03_carbon_mod_json.md
+  - The Language:
+      - Basics: language/01_basics.md
+      - Logic & Variables: language/02_logic_and_variables.md
+      - Items: language/03_items.md
+      - Blocks: language/04_blocks.md
+      - Mobs: language/05_mobs.md
+      - Recipes: language/06_recipes.md
+      - Commands: language/07_commands.md
+      - Effects & Potions: language/08_effects_and_potions.md
+      - Actions: language/09_actions.md
+  - Reference:
+      - Events: reference/01_events.md
+      - Targets: reference/02_targets.md
+      - Item Types: reference/03_item_types.md
+      - Mob Types: reference/04_mob_types.md
+      - Block Types: reference/05_block_types.md
+      - Common Errors: reference/06_errors.md
+  - Advanced:
+      - Allotrope Mixins: advanced/01_allotrope.md
+  - Technical Spec:
+      - Formal Specification: SPEC.md
+      - Compiler Requirements: compiler/compiler-requirements.md
+      - Folder Structure Spec: structure/folder-structure.md
+      - Mod JSON Spec: structure/carbon-mod-json.md
