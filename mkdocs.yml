@@ -4,6 +4,8 @@ repo_url: https://github.com/stratcube2/carbon-script
 
 theme:
   name: material
+  logo: assets/logo.png
+  favicon: assets/favicon.png
   palette: 
     - scheme: slate # Dark mode
       primary: indigo
