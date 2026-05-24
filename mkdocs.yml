@@ -15,7 +15,7 @@ theme:
     - content.code.copy
 
 nav:
-  - Home: index.md
+  - Home: index.md  # This was your README.md
   - Getting Started:
       - Your First Mod: getting-started/01_your_first_mod.md
       - Folder Structure: getting-started/02_folder_structure.md
@@ -39,8 +39,8 @@ nav:
       - Common Errors: reference/06_errors.md
   - Advanced:
       - Allotrope Mixins: advanced/01_allotrope.md
-  - Technical Spec:
-      - Formal Specification: SPEC.md
+  - Technical Spec: # Separate section for the heavy stuff
+      - Language Formal Spec: SPEC.md
       - Compiler Requirements: compiler/compiler-requirements.md
       - Folder Structure Spec: structure/folder-structure.md
       - Mod JSON Spec: structure/carbon-mod-json.md
