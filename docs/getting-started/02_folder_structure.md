@@ -38,7 +38,7 @@ my_mod.zip
 ## What Goes Where
 
 ### `carbon.mod.json`
-The first thing Carbon Loader reads. Contains your mod's name, version, and other info. See <a href="03_carbon_mod_json.md">getting-started/03_carbon_mod_json.md</a> for full details.
+The first thing Carbon Loader reads. Contains your mod's name, version, and other info. See <a href="./03_carbon_mod_json/">getting-started/03_carbon_mod_json/</a> for full details.
 
 ### `resources/textures/`
 PNG image files for your items and blocks. Should be 16x16 pixels for items. Larger sizes work for blocks and mobs.
