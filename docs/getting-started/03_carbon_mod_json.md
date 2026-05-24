@@ -101,7 +101,7 @@ If your mod type is `"allotrope"`, you need an extra section to tell Carbon Load
 
 If you just write `"mixins": ["src/guifix.cj"]` as a flat list, Carbon assumes it is a child (Minecraft-side) mixin.
 
-> See <a href="../advanced/01_allotrope/">advanced/01_allotrope/</a> for full details on writing Allotrope mods.
+> See <a href="../../advanced/01_allotrope/">advanced/01_allotrope/</a> for full details on writing Allotrope mods.
 
 ---
 
