@@ -1,4 +1,4 @@
-# Carbon Java Script — Mod Folder Structure
+# Carbon Lang Script — Mod Folder Structure
 
 Carbon mods are distributed as `.zip` files. Carbon Lib unzips them at runtime
 into a temp directory and loads them. No build step is required from the modder.
@@ -17,7 +17,7 @@ my_awesome_mod.zip
 │   ├── models/                       # Custom 3D models (.glb or .obj)
 │   └── sounds/                       # Audio files (.mp3, .ogg)
 │
-└── src/                              # All Carbon Java Script logic
+└── src/                              # All Carbon Lang Script logic
     ├── definitions/                  # Global registration
     │   ├── mobs.cj                   # All "add mob" declarations
     │   ├── blocks.cj                 # All "add block" declarations

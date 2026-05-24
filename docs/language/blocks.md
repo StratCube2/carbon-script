@@ -1,4 +1,4 @@
-# Carbon Java Script — Block Types & Properties
+# Carbon Lang Script — Block Types & Properties
 
 ---
 

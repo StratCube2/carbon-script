@@ -1,9 +1,9 @@
-# Carbon Java Script — Core Syntax
+# Carbon Lang Script — Core Syntax
 
 ## File Header
 
 Every `.cj` file must begin with `carbonjava` on the very first line.
-This identifies the file as a Carbon Java Script file.
+This identifies the file as a Carbon Lang Script file.
 
 ```
 carbonjava

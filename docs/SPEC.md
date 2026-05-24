@@ -1,6 +1,6 @@
-# Carbon Java — Formal Language Specification
+# Carbon Lang — Formal Language Specification
 
-This document is the technical reference for the Carbon Java compiler and runtime. It defines every keyword, grammar rule, and behaviour of the language. This is intended for the developers building the compiler and Carbon Lib mod — not for end users.
+This document is the technical reference for the Carbon Lang compiler and runtime. It defines every keyword, grammar rule, and behaviour of the language. This is intended for the developers building the compiler and Carbon Lib mod — not for end users.
 
 ---
 
@@ -208,7 +208,7 @@ Any attempt to reference these should be caught at compile time and reported as 
 
 ## 12. Compilation Pipeline (Option B — Transpile to Java)
 
-Carbon Java uses a transpile-then-compile approach. `.cj` files are never directly converted to bytecode. Instead they go through a pipeline: `.cj` → token list → AST → `.java` source → `.class` bytecode → live JVM class.
+Carbon Lang uses a transpile-then-compile approach. `.cj` files are never directly converted to bytecode. Instead they go through a pipeline: `.cj` → token list → AST → `.java` source → `.class` bytecode → live JVM class.
 
 This makes the compiler easier to build, easier to debug, and produces readable intermediate output at every step.
 

@@ -1,6 +1,6 @@
-# The Basics of Carbon Java
+# The Basics of Carbon Lang
 
-Carbon Java is designed to be as simple as possible. This page explains how a `.cj` file works from top to bottom.
+Carbon Lang is designed to be as simple as possible. This page explains how a `.cj` file works from top to bottom.
 
 ---
 
@@ -12,7 +12,7 @@ Every single `.cj` file must start with this on the very first line:
 carbonjava
 ```
 
-That's it. No brackets, no semicolons. Just that word. It tells Carbon Loader "this is a Carbon Java file."
+That's it. No brackets, no semicolons. Just that word. It tells Carbon Loader "this is a Carbon Lang file."
 
 If you forget it, the file won't load.
 
@@ -39,7 +39,7 @@ Use comments to remind yourself what things do, especially when you come back to
 
 ## Blocks
 
-Almost everything in Carbon Java is written inside a **block**. A block starts with `add` and ends with `end`.
+Almost everything in Carbon Lang is written inside a **block**. A block starts with `add` and ends with `end`.
 
 ```
 add item
@@ -102,7 +102,7 @@ The path starts from inside the `src/` folder.
 
 ## Indentation
 
-Carbon Java does **not** require indentation. These two blocks are identical to the compiler:
+Carbon Lang does **not** require indentation. These two blocks are identical to the compiler:
 
 ```
 add item

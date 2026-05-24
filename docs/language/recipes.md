@@ -1,4 +1,4 @@
-# Carbon Java Script — Recipes
+# Carbon Lang Script — Recipes
 
 Recipe files live in `src/recipes/` and use a special simplified format.
 They do not start with `carbonjava` — they are purely data files.

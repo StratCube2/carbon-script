@@ -1,4 +1,4 @@
-# Carbon Java Script — Logic, Conditions & Loops
+# Carbon Lang Script — Logic, Conditions & Loops
 
 ---
 
@@ -25,7 +25,7 @@ run (normal.cj)
 ## `anif` — And If
 
 Used when you need multiple conditions to all be true.
-Because there is no indentation in Carbon Java, `anif` replaces chained `and` conditions.
+Because there is no indentation in Carbon Lang, `anif` replaces chained `and` conditions.
 
 ```
 if (holding)

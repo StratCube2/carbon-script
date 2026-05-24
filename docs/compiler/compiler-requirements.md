@@ -1,4 +1,4 @@
-# Carbon Java Script — Compiler & Runtime Requirements
+# Carbon Lang Script — Compiler & Runtime Requirements
 
 This document is intended for the developer building the Carbon Lib mod and
 the CJ compiler. It describes everything the compiler and runtime must do.
@@ -7,7 +7,7 @@ the CJ compiler. It describes everything the compiler and runtime must do.
 
 ## Overview
 
-The Carbon Java Script compiler is built into Carbon Lib (a Fabric mod).
+The Carbon Lang Script compiler is built into Carbon Lib (a Fabric mod).
 It runs entirely at mod-load time — modders never run a compiler themselves.
 The compiler takes `.cj` source files and produces JVM bytecode via ASM.
 

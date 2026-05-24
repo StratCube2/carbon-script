@@ -1,6 +1,6 @@
 # Targets Reference
 
-Targets tell Carbon Java *who* an action applies to. They are used in `effect`, `damage`, `spawn`, `teleport`, and similar action lines.
+Targets tell Carbon Lang *who* an action applies to. They are used in `effect`, `damage`, `spawn`, `teleport`, and similar action lines.
 
 ---
 

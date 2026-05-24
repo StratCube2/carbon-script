@@ -1,4 +1,4 @@
-# Carbon Java Script — Actions & Execution
+# Carbon Lang Script — Actions & Execution
 
 ---
 

@@ -1,6 +1,6 @@
 # Logic and Variables
 
-This page covers how to make decisions, store information, and repeat things in Carbon Java.
+This page covers how to make decisions, store information, and repeat things in Carbon Lang.
 
 ---
 
@@ -83,7 +83,7 @@ run (scripts/normal.cj)
 
 ### And — `anif`
 
-Because Carbon Java doesn't use indentation for logic, "and" is written as `anif` on the next line:
+Because Carbon Lang doesn't use indentation for logic, "and" is written as `anif` on the next line:
 
 ```
 if (holding)

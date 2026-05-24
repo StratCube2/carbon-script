@@ -8,7 +8,7 @@ You do **not** need to know Java, Gradle, or any complicated tools. If you can w
 
 ## What is a Carbon Mod?
 
-A Carbon mod is a `.zip` file you drop into your mods folder. Inside that zip are scripts written in Carbon Java, plus any textures, models, or sounds your mod uses. Carbon Loader reads the zip, compiles your scripts on the fly, and loads your mod into the game — no building required.
+A Carbon mod is a `.zip` file you drop into your mods folder. Inside that zip are scripts written in Carbon Lang, plus any textures, models, or sounds your mod uses. Carbon Loader reads the zip, compiles your scripts on the fly, and loads your mod into the game — no building required.
 
 ---
 
@@ -24,7 +24,7 @@ A Carbon mod is a `.zip` file you drop into your mods folder. Inside that zip ar
 ### The Language
 | File | What it covers |
 |------|---------------|
-| <a href="language/01_basics/">language/01_basics/</a> | How Carbon Java works, comments, structure |
+| <a href="language/01_basics/">language/01_basics/</a> | How Carbon Lang works, comments, structure |
 | <a href="language/02_logic_and_variables/">language/02_logic_and_variables/</a> | If statements, variables, loops |
 | <a href="language/03_items/">language/03_items/</a> | Adding custom items, weapons, food, armor |
 | <a href="language/04_blocks/">language/04_blocks/</a> | Adding custom blocks |

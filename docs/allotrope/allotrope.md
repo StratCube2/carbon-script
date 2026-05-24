@@ -1,4 +1,4 @@
-# Carbon Java Script — Allotrope Mixin System
+# Carbon Lang Script — Allotrope Mixin System
 
 Allotrope is the advanced injection system built into Carbon Loader. It allows
 mods to inject raw Java code into Carbon Loader's Parent or Child classloader.
