@@ -65,8 +65,8 @@ condition_line := ("if" | "anif") ["not"] "(" expr ")" ["or" "(" expr ")"] NEWLI
 
 run_stmt     := "run" "(" path ["," expr] ")" ["and" "(" path ")"]* NEWLINE
 
-cmd_stmt     := "cmd" "(" "/" minecraft_command ")" NEWLINE
-                minecraft_command := any text, with "+" concatenation for variable insertion
+cmd_stmt     := "cmd" "(" STRING_WITH_SUBSTITUTIONS ")" NEWLINE
+                STRING_WITH_SUBSTITUTIONS := quoted string containing zero or more "{" expr "}" blocks
 
 if_block     := condition_line+ run_stmt [NEWLINE "else" NEWLINE run_stmt]
 
@@ -336,7 +336,8 @@ class RunNode extends AstNode {
 }
 
 class CmdNode extends AstNode {
-    List<Object> parts;         // mix of string literals and ExprNodes, joined at runtime
+    String raw;                 // the full quoted string as written
+    List<Object> parts;         // pre-parsed at compile time: mix of plain strings and ExprNodes
 }
 
 class IfNode extends AstNode {

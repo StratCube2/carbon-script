@@ -159,26 +159,16 @@ end
 Use `cmd` to run any Minecraft slash command directly from a script:
 
 ```
-add action
-cmd (/say Hello everyone!)
-end
-
-add action
-cmd (/time set day)
-end
+cmd ("/say Hello everyone!")
+cmd ("/time set day")
 ```
 
-With variables using string concatenation:
+Variables are inserted using curly braces:
 
 ```
-add action
-cmd (/msg target "Use /tpaccept to accept the TPA from " + #p.name)
-end
-
-add action
-cmd (/give #p.name minecraft:diamond 1)
-end
+@ Variables are inserted using curly braces:
+cmd ("/msg {target} Use /tpaccept to accept the TPA from {#p.name}")
+cmd ("/give {#p.name} minecraft:diamond 1")
 ```
 
-The `/` is required. Any valid Minecraft command works here.
-Variable values are inserted using `+` concatenation, same as anywhere else in Carbon Java.
+The entire command is a quoted string. Use `{variable}` or `{#p.name}` anywhere inside it to insert a value at runtime.

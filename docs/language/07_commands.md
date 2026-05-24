@@ -126,7 +126,7 @@ Inside any script, you can run a Minecraft command directly using `cmd`:
 
 ```
 add action
-cmd (/msg target "Someone wants to teleport to you!")
+cmd ("/msg {target} Someone wants to teleport to you!")
 end
 ```
 
