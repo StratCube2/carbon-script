@@ -517,14 +517,14 @@ public class Carbon_<modid>_<scriptname> implements CarbonScript {
 
 ### Step 5 — Runtime Compiler
 
-**Class:** `CarbonJavaCompiler`
+**Class:** `CarbonLangCompiler`
 **Input:** `.java` source file path
 **Output:** `.class` bytecode file
 
 Uses `javax.tools.JavaCompiler` which is built into the JDK. The Minecraft classpath and Carbon Lib classpath must be on the compiler's classpath so the generated code can reference them.
 
 ```java
-public class CarbonJavaCompiler {
+public class CarbonLangCompiler {
     public boolean compile(Path javaFile, Path outputDir, List<Path> classpath) {
         JavaCompiler compiler = ToolProvider.getSystemJavaCompiler();
         StandardJavaFileManager fm = compiler.getStandardFileManager(null, null, null);
@@ -643,7 +643,7 @@ Build and test in this order. Each step can be unit tested independently before 
 | 11 | `CarbonPersistence` | Fabric API | No |
 | 12 | `CarbonActions` | Fabric API | No |
 | 13 | `CarbonTranspiler` | Parser + Builder classes | Yes (mock builders) |
-| 14 | `CarbonJavaCompiler` | javax.tools | Yes |
+| 14 | `CarbonLangCompiler` | javax.tools | Yes |
 | 15 | `CarbonClassLoader` | compiled classes | Yes |
 | 16 | `CarbonRuntime` | all of the above | No |
 | 17 | `CarbonWatcher` | CarbonRuntime | No |
