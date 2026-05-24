@@ -133,7 +133,7 @@ run (scripts/on_flood.cj)
 
 ```
 
-See `reference/01_events.md` for the full events list.
+See <a href="../reference/01_events.md">reference/01_events.md</a> for the full events list.
 
 ---
 
