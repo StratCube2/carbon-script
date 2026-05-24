@@ -133,7 +133,7 @@ run (scripts/on_flood.cj)
 
 ```
 
-See [Events Reference](../reference/01_events.md) for the full events list.
+See `reference/01_events.md` for the full events list.
 
 ---
 
