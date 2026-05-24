@@ -117,3 +117,18 @@ add action
 effect (target) (minecraft:instant_health 1 1)
 end
 ```
+
+---
+
+## Running Minecraft Commands from Scripts
+
+Inside any script, you can run a Minecraft command directly using `cmd`:
+
+```
+add action
+cmd ("/msg {target} Someone wants to teleport to you!")
+end
+```
+
+This is different from `run`, which calls another `.cj` script.
+Use `run` for Carbon logic, `cmd` for Minecraft commands.

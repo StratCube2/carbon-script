@@ -151,3 +151,24 @@ modifier damage(8)
 modifier projectile_speed(3)
 end
 ```
+
+---
+
+## Running Minecraft Commands
+
+Use `cmd` to run any Minecraft slash command directly from a script:
+
+```
+cmd ("/say Hello everyone!")
+cmd ("/time set day")
+```
+
+Variables are inserted using curly braces:
+
+```
+@ Variables are inserted using curly braces:
+cmd ("/msg {target} Use /tpaccept to accept the TPA from {#p.name}")
+cmd ("/give {#p.name} minecraft:diamond 1")
+```
+
+The entire command is a quoted string. Use `{variable}` or `{#p.name}` anywhere inside it to insert a value at runtime.
