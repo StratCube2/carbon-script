@@ -20,7 +20,7 @@ This document is the technical reference for the Carbon Lang compiler and runtim
 |-------|---------|-------|
 | HEADER | `carbonjava` | Must be line 1 |
 | COMMENT | `@ ...` to end of line | Stripped at lex time |
-| KEYWORD | `add`, `end`, `on`, `run`, `if`, `anif`, `else`, `not`, `or`, `loop`, `stop`, `input`, `modifier`, `trigger`, `action`, `spawn`, `fire`, `effect`, `damage`, `playsound`, `teleport`, `recipe`, `drop`, `copy`, `execute`, `argument` | Reserved |
+| KEYWORD | `add`, `end`, `on`, `run`, `if`, `anif`, `else`, `not`, `or`, `loop`, `stop`, `input`, `modifier`, `trigger`, `action`, `spawn`, `fire`, `effect`, `damage`, `playsound`, `teleport`, `recipe`, `drop`, `copy`, `execute`, `argument`, `cmd` | Reserved |
 | BLOCK_TYPE | `item`, `mob`, `block`, `command`, `effect`, `action`, `behaviour`, `drops` | Used after `add` |
 | IDENTIFIER | `[a-z_][a-z0-9_]*` | Mod IDs, variable names, property names |
 | NS_IDENTIFIER | `[a-z_]+:[a-z_]+` | Namespaced IDs, e.g. `minecraft:zombie` |
@@ -50,6 +50,7 @@ statement    := add_block
               | loop_block
               | assignment
               | run_stmt
+              | cmd_stmt
               | allotrope_block
               | input_decl
 
@@ -63,6 +64,9 @@ on_block     := "on" "(" IDENTIFIER ")" NEWLINE (condition_line)* run_stmt NEWLI
 condition_line := ("if" | "anif") ["not"] "(" expr ")" ["or" "(" expr ")"] NEWLINE
 
 run_stmt     := "run" "(" path ["," expr] ")" ["and" "(" path ")"]* NEWLINE
+
+cmd_stmt     := "cmd" "(" "/" minecraft_command ")" NEWLINE
+                minecraft_command := any text, with "+" concatenation for variable insertion
 
 if_block     := condition_line+ run_stmt [NEWLINE "else" NEWLINE run_stmt]
 
@@ -245,6 +249,7 @@ public enum TokenType {
     KEYWORD_COPY,     // "copy"
     KEYWORD_EXECUTE,  // "execute"
     KEYWORD_ARGUMENT, // "argument"
+    KEYWORD_CMD,      // "cmd"
     KEYWORD_FIRE,     // "fire"
     KEYWORD_EFFECT,   // "effect"
     KEYWORD_DAMAGE,   // "damage"
@@ -328,6 +333,10 @@ class ConditionNode extends AstNode {
 class RunNode extends AstNode {
     List<String> paths;         // supports "and" — multiple paths
     List<ExprNode> args;
+}
+
+class CmdNode extends AstNode {
+    List<Object> parts;         // mix of string literals and ExprNodes, joined at runtime
 }
 
 class IfNode extends AstNode {
@@ -480,6 +489,7 @@ public class Carbon_<modid>_<scriptname> implements CarbonScript {
 | `PropertyNode` | `.propertyName(value)` on the enclosing builder |
 | `OnEventNode` | `events.on(EventType.X, (ctx) -> { ... })` |
 | `RunNode` | `CarbonRuntime.run("path", args)` |
+| `CmdNode` | `CarbonActions.runCommand(server, commandString)` |
 | `IfNode` | Standard Java `if` / `else` |
 | `LoopNode(count)` | `for (int i = 0; i < N; i++)` |
 | `LoopNode(null)` | `events.onTick((ctx) -> { ... })` |

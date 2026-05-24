@@ -165,6 +165,19 @@ run (scripts/wave_spawner.cj)              ← missing argument
 
 ---
 
+## Using `run` for a Minecraft Command
+
+**Error:**
+```
+[Carbon] Error in src/scripts/example.cj line 4:
+  "run" is for .cj scripts only. To run a Minecraft command, use "cmd" instead.
+  Example: cmd (/msg target "hello")
+```
+
+**Fix:** Replace `run (/msg ...)` with `cmd (/msg ...)`.
+
+---
+
 ## Quick Checklist When Something Doesn't Work
 
 1. Does every `.cj` file start with `carbonjava`?

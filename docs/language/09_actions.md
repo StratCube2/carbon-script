@@ -151,3 +151,34 @@ modifier damage(8)
 modifier projectile_speed(3)
 end
 ```
+
+---
+
+## Running Minecraft Commands
+
+Use `cmd` to run any Minecraft slash command directly from a script:
+
+```
+add action
+cmd (/say Hello everyone!)
+end
+
+add action
+cmd (/time set day)
+end
+```
+
+With variables using string concatenation:
+
+```
+add action
+cmd (/msg target "Use /tpaccept to accept the TPA from " + #p.name)
+end
+
+add action
+cmd (/give #p.name minecraft:diamond 1)
+end
+```
+
+The `/` is required. Any valid Minecraft command works here.
+Variable values are inserted using `+` concatenation, same as anywhere else in Carbon Java.
