@@ -101,7 +101,7 @@ Carbon defaults to child injection when no parent/child split is specified.
 
 | Type | Description |
 |------|-------------|
-| `"carbon"` | A standard Carbon Java Script mod. |
+| `"carbon"` | A standard Carbon Lang Script mod. |
 | `"allotrope"` | Injects Java into Carbon Loader via mixins. |
 | `"fabric"` | A Fabric mod that uses carbon.mod.json for Carbon ecosystem compatibility. |
 

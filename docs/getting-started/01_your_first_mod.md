@@ -67,7 +67,7 @@ What each line means:
 
 | Line | What it does |
 |------|-------------|
-| `carbonjava` | Marks this as a Carbon Java file. Every .cj file starts with this. |
+| `carbonjava` | Marks this as a Carbon Lang file. Every .cj file starts with this. |
 | `add item` | You are defining a new item. |
 | `name (ruby)` | The item's ID. Shows in game as "Ruby". |
 | `type ingredient` | This item is used for crafting. |

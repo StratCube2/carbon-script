@@ -1,4 +1,4 @@
-# Carbon Java Script — Events
+# Carbon Lang Script — Events
 
 Events are used with `on` inside any `add` block, or standalone in action scripts.
 

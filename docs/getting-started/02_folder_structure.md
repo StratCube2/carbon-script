@@ -16,7 +16,7 @@ my_mod.zip
 │   ├── models/                  ← 3D model files (.glb)
 │   └── sounds/                  ← Audio files
 │
-└── src/                         ← All your Carbon Java scripts
+└── src/                         ← All your Carbon Lang scripts
     ├── definitions/             ← Where you define things that exist in the game
     │   ├── items.cj             ← Your custom items
     │   ├── blocks.cj            ← Your custom blocks

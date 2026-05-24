@@ -46,7 +46,7 @@ There are three types of Carbon mod:
 
 | Type | What it means |
 |------|--------------|
-| `"carbon"` | A normal mod made with Carbon Java scripts. This is what you want. |
+| `"carbon"` | A normal mod made with Carbon Lang scripts. This is what you want. |
 | `"allotrope"` | An advanced mod that injects code into Carbon Loader itself. Requires Java knowledge. |
 | `"fabric"` | A regular Fabric mod that wants to connect to Carbon Loader features. |
 

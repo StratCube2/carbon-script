@@ -1,4 +1,4 @@
-# Carbon Java Script — Variables, Types & Persistent Data
+# Carbon Lang Script — Variables, Types & Persistent Data
 
 ---
 
