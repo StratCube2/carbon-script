@@ -129,6 +129,6 @@ Select everything inside `my_mod/`, zip it, rename to `ruby_mod.zip`, and drop i
 
 ## What's Next?
 
-- Add more items → `language/03_items.md`
-- Make a more complex recipe → `language/06_recipes.md`
-- Add a mob → `language/05_mobs.md`
+- Add more items → [Items Guide](../language/03_items.md)
+- Make a more complex recipe → [Recipes Guide](../language/06_recipes.md)
+- Add a mob → [Mobs Guide](../language/05_mobs.md)

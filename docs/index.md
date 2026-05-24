@@ -17,37 +17,37 @@ A Carbon mod is a `.zip` file you drop into your mods folder. Inside that zip ar
 ### Getting Started (Start Here)
 | File | What it covers |
 |------|---------------|
-| `getting-started/01_your_first_mod.md` | Making your first mod from scratch |
-| `getting-started/02_folder_structure.md` | What goes where inside your mod zip |
-| `getting-started/03_carbon_mod_json.md` | The mod info file explained |
+| [Your First Mod Guide](getting-started/01_your_first_mod.md) | Making your first mod from scratch |
+| [Folder Structure Guide](getting-started/02_folder_structure.md) | What goes where inside your mod zip |
+| [Carbon Mod JSON Guide](getting-started/03_carbon_mod_json.md) | The mod info file explained |
 
 ### The Language
 | File | What it covers |
 |------|---------------|
-| `language/01_basics.md` | How Carbon Java works, comments, structure |
-| `language/02_logic_and_variables.md` | If statements, variables, loops |
-| `language/03_items.md` | Adding custom items, weapons, food, armor |
-| `language/04_blocks.md` | Adding custom blocks |
-| `language/05_mobs.md` | Adding custom mobs and AI |
-| `language/06_recipes.md` | Crafting, smelting, and other recipes |
-| `language/07_commands.md` | Adding custom slash commands |
-| `language/08_effects_and_potions.md` | Custom potion effects |
-| `language/09_actions.md` | Writing behavior scripts |
+| [Basics Guide](language/01_basics.md) | How Carbon Java works, comments, structure |
+| [Logic & Variables Guide](language/02_logic_and_variables.md) | If statements, variables, loops |
+| [Items Guide](language/03_items.md) | Adding custom items, weapons, food, armor |
+| [Blocks Guide](language/04_blocks.md) | Adding custom blocks |
+| [Mobs Guide](language/05_mobs.md) | Adding custom mobs and AI |
+| [Recipes Guide](language/06_recipes.md) | Crafting, smelting, and other recipes |
+| [Commands Guide](language/07_commands.md) | Adding custom slash commands |
+| [Effects & Potions Guide](language/08_effects_and_potions.md) | Custom potion effects |
+| [Actions Guide](language/09_actions.md) | Writing behavior scripts |
 
 ### Reference
 | File | What it covers |
 |------|---------------|
-| `reference/01_events.md` | Every event you can listen to |
-| `reference/02_targets.md` | #p, #s, nearest_entity and more |
-| `reference/03_item_types.md` | Full list of item types and properties |
-| `reference/04_mob_types.md` | Full list of mob properties and AI goals |
-| `reference/05_block_types.md` | Full list of block properties |
-| `reference/06_errors.md` | Common errors and how to fix them |
+| [Events Reference](reference/01_events.md) | Every event you can listen to |
+| [Targets Reference](reference/02_targets.md) | #p, #s, nearest_entity and more |
+| [Item Types Reference](reference/03_item_types.md) | Full list of item types and properties |
+| [Mob Types Reference](reference/04_mob_types.md) | Full list of mob properties and AI goals |
+| [Block Types Reference](reference/05_block_types.md) | Full list of block properties |
+| [Common Errors Reference](reference/06_errors.md) | Common errors and how to fix them |
 
 ### Advanced
 | File | What it covers |
 |------|---------------|
-| `advanced/01_allotrope.md` | Injecting code into Carbon Loader (requires Java knowledge) |
+| [Allotrope Guide](advanced/01_allotrope.md) | Injecting code into Carbon Loader (requires Java knowledge) |
 
 ---
 
@@ -92,4 +92,4 @@ If you see an error like:
 [Carbon] Error in src/definitions/items.cj line 4:
   "tipe" is not recognised. Did you mean "type"?
 ```
-Check the `reference/06_errors.md` file for a full list of common mistakes and fixes.
+Check the [Common Errors Reference](reference/06_errors.md) file for a full list of common mistakes and fixes.

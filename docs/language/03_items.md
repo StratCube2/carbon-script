@@ -185,7 +185,7 @@ run (scripts/held_tick.cj)
 
 ```
 
-A blank line between `on` blocks separates them. See `reference/01_events.md` for the full list of events.
+A blank line between `on` blocks separates them. See [Events Reference](../reference/01_events.md) for the full list of events.
 
 ---
 
