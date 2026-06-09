@@ -1,0 +1,3334 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://stratcube2.github.io/carbon-script/SPEC/">
+      
+      
+        <link rel="prev" href="../advanced/01_allotrope/">
+      
+      
+        <link rel="next" href="../compiler/compiler-requirements/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Language Formal Spec - Carbon Lang Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#carbon-lang-formal-language-specification" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Carbon Lang Documentation" class="md-header__button md-logo" aria-label="Carbon Lang Documentation" data-md-component="logo">
+      
+  <img src="../assets/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Carbon Lang Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Language Formal Spec
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/stratcube2/carbon-script" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../getting-started/01_your_first_mod/" class="md-tabs__link">
+          
+  
+  
+  Getting Started
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../language/01_basics/" class="md-tabs__link">
+          
+  
+  
+  The Language
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../reference/01_events/" class="md-tabs__link">
+          
+  
+  
+  Reference
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../advanced/01_allotrope/" class="md-tabs__link">
+          
+  
+  
+  Advanced
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+  
+  Technical Spec
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Carbon Lang Documentation" class="md-nav__button md-logo" aria-label="Carbon Lang Documentation" data-md-component="logo">
+      
+  <img src="../assets/logo.png" alt="logo">
+
+    </a>
+    Carbon Lang Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/stratcube2/carbon-script" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Getting Started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/01_your_first_mod/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Your First Mod
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/02_folder_structure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Folder Structure
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/03_carbon_mod_json/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mod JSON
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The Language
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    The Language
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../language/01_basics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Basics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../language/02_logic_and_variables/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Logic & Variables
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../language/03_items/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Items
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../language/04_blocks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Blocks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../language/05_mobs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mobs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../language/06_recipes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Recipes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../language/07_commands/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Commands
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../language/08_effects_and_potions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Effects & Potions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../language/09_actions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Actions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/01_events/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Events
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/02_targets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Targets
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/03_item_types/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Item Types
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/04_mob_types/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mob Types
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/05_block_types/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Block Types
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/06_errors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Common Errors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Advanced
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Advanced
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../advanced/01_allotrope/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Allotrope Mixins
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Technical Spec
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Technical Spec
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Language Formal Spec
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Language Formal Spec
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-file-format" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. File Format
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-tokens" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Tokens
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-grammar-simplified-bnf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Grammar (Simplified BNF)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-type-inference-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Type Inference Rules
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-persistent-data-prefixes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Persistent Data Prefixes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-run-semantics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. run Semantics
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-add-block-types-and-required-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. add Block Types and Required Properties
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-error-reporting-format" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Error Reporting Format
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-mod-zip-loading-sequence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Mod Zip Loading Sequence
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-hot-reload-sequence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Hot-Reload Sequence
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-sandboxing-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Sandboxing Rules
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-compilation-pipeline-option-b-transpile-to-java" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. Compilation Pipeline (Option B — Transpile to Java)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="12. Compilation Pipeline (Option B — Transpile to Java)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-lexer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1 — Lexer
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-ast-node-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2 — AST Node Classes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-parser" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3 — Parser
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4-transpiler" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 4 — Transpiler
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-5-runtime-compiler" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 5 — Runtime Compiler
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-6-carbon-api-carbon-lib" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 6 — Carbon API (Carbon Lib)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-7-class-loader" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 7 — Class Loader
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-8-hot-reload-watcher" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 8 — Hot-Reload Watcher
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#full-build-order-for-the-coding-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Full Build Order for the Coding Agent
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-extended-variable-and-selector-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. Extended Variable and Selector System
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="13. Extended Variable and Selector System">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#131-writing-persistent-data-to-a-specific-player" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.1 Writing Persistent Data to a Specific Player
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#132-built-in-read-only-player-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.2 Built-in Read-Only Player Properties
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#133-early-script-exit-exit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.3 Early Script Exit — exit
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#134-player-lookup-by-name-find_player" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.4 Player Lookup by Name — find_player
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-mod-level-persistent-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14. Mod-Level Persistent Variables
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="14. Mod-Level Persistent Variables">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#141-declaration-in-carbonmodjson" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.1 Declaration in carbon.mod.json
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#142-valid-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.2 Valid Types
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#143-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.3 Rules
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#144-usage-in-scripts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.4 Usage in Scripts
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../compiler/compiler-requirements/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Compiler Requirements
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../structure/folder-structure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Folder Structure Spec
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../structure/carbon-mod-json/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mod JSON Spec
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-file-format" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. File Format
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-tokens" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Tokens
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-grammar-simplified-bnf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Grammar (Simplified BNF)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-type-inference-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Type Inference Rules
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-persistent-data-prefixes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Persistent Data Prefixes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-run-semantics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. run Semantics
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-add-block-types-and-required-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. add Block Types and Required Properties
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-error-reporting-format" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Error Reporting Format
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-mod-zip-loading-sequence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Mod Zip Loading Sequence
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-hot-reload-sequence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Hot-Reload Sequence
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-sandboxing-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Sandboxing Rules
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-compilation-pipeline-option-b-transpile-to-java" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. Compilation Pipeline (Option B — Transpile to Java)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="12. Compilation Pipeline (Option B — Transpile to Java)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-lexer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1 — Lexer
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-ast-node-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2 — AST Node Classes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-parser" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3 — Parser
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4-transpiler" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 4 — Transpiler
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-5-runtime-compiler" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 5 — Runtime Compiler
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-6-carbon-api-carbon-lib" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 6 — Carbon API (Carbon Lib)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-7-class-loader" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 7 — Class Loader
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-8-hot-reload-watcher" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 8 — Hot-Reload Watcher
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#full-build-order-for-the-coding-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Full Build Order for the Coding Agent
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-extended-variable-and-selector-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. Extended Variable and Selector System
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="13. Extended Variable and Selector System">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#131-writing-persistent-data-to-a-specific-player" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.1 Writing Persistent Data to a Specific Player
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#132-built-in-read-only-player-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.2 Built-in Read-Only Player Properties
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#133-early-script-exit-exit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.3 Early Script Exit — exit
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#134-player-lookup-by-name-find_player" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.4 Player Lookup by Name — find_player
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-mod-level-persistent-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14. Mod-Level Persistent Variables
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="14. Mod-Level Persistent Variables">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#141-declaration-in-carbonmodjson" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.1 Declaration in carbon.mod.json
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#142-valid-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.2 Valid Types
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#143-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.3 Rules
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#144-usage-in-scripts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.4 Usage in Scripts
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="carbon-lang-formal-language-specification">Carbon Lang — Formal Language Specification</h1>
+<p>This document is the technical reference for the Carbon Lang compiler and runtime. It defines every keyword, grammar rule, and behaviour of the language. This is intended for the developers building the compiler and Carbon Lib mod — not for end users.</p>
+<hr />
+<h2 id="1-file-format">1. File Format</h2>
+<ul>
+<li>Extension: <code>.cj</code></li>
+<li>Encoding: UTF-8</li>
+<li>Every file must begin with the token <code>carbonjava</code> on line 1 with no leading whitespace.</li>
+<li>Lines are newline-separated (<code>\n</code> or <code>\r\n</code>).</li>
+<li>Indentation is optional and ignored by the compiler.</li>
+</ul>
+<hr />
+<h2 id="2-tokens">2. Tokens</h2>
+<table>
+<thead>
+<tr>
+<th>Token</th>
+<th>Pattern</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HEADER</td>
+<td><code>carbonjava</code></td>
+<td>Must be line 1</td>
+</tr>
+<tr>
+<td>COMMENT</td>
+<td><code>@ ...</code> to end of line</td>
+<td>Stripped at lex time</td>
+</tr>
+<tr>
+<td>KEYWORD</td>
+<td><code>add</code>, <code>end</code>, <code>on</code>, <code>run</code>, <code>if</code>, <code>anif</code>, <code>else</code>, <code>not</code>, <code>or</code>, <code>loop</code>, <code>stop</code>, <code>input</code>, <code>modifier</code>, <code>trigger</code>, <code>action</code>, <code>spawn</code>, <code>fire</code>, <code>effect</code>, <code>damage</code>, <code>playsound</code>, <code>teleport</code>, <code>recipe</code>, <code>drop</code>, <code>copy</code>, <code>execute</code>, <code>argument</code>, <code>cmd</code></td>
+<td>Reserved</td>
+</tr>
+<tr>
+<td>BLOCK_TYPE</td>
+<td><code>item</code>, <code>mob</code>, <code>block</code>, <code>command</code>, <code>effect</code>, <code>action</code>, <code>behaviour</code>, <code>drops</code></td>
+<td>Used after <code>add</code></td>
+</tr>
+<tr>
+<td>IDENTIFIER</td>
+<td><code>[a-z_][a-z0-9_]*</code></td>
+<td>Mod IDs, variable names, property names</td>
+</tr>
+<tr>
+<td>NS_IDENTIFIER</td>
+<td><code>[a-z_]+:[a-z_]+</code></td>
+<td>Namespaced IDs, e.g. <code>minecraft:zombie</code></td>
+</tr>
+<tr>
+<td>SELECTOR</td>
+<td><code>#p</code>, <code>#s</code>, <code>#a</code>, <code>#e</code>, <code>#w</code>, <code>#mod</code>, <code>#b</code> followed optionally by <code>.identifier</code></td>
+<td>Persistent data / targets</td>
+</tr>
+<tr>
+<td>STRING</td>
+<td><code>"..."</code></td>
+<td>Text values</td>
+</tr>
+<tr>
+<td>INTEGER</td>
+<td><code>[0-9]+</code></td>
+<td>Whole numbers</td>
+</tr>
+<tr>
+<td>FLOAT</td>
+<td><code>[0-9]+\.[0-9]+</code></td>
+<td>Decimal numbers</td>
+</tr>
+<tr>
+<td>BOOLEAN</td>
+<td><code>true</code> or <code>false</code></td>
+<td></td>
+</tr>
+<tr>
+<td>LPAREN</td>
+<td><code>(</code></td>
+<td></td>
+</tr>
+<tr>
+<td>RPAREN</td>
+<td><code>)</code></td>
+<td></td>
+</tr>
+<tr>
+<td>EQUALS</td>
+<td><code>=</code></td>
+<td>Assignment</td>
+</tr>
+<tr>
+<td>AUGMENTED_ASSIGN</td>
+<td><code>+=</code>, <code>-=</code>, <code>*=</code>, <code>/=</code></td>
+<td>Compound assignment</td>
+</tr>
+<tr>
+<td>OP</td>
+<td><code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code>, <code>&gt;=</code></td>
+<td>Math and comparison</td>
+</tr>
+<tr>
+<td>ALLOTROPE_OPEN</td>
+<td><code>#at</code></td>
+<td>Allotrope injection point</td>
+</tr>
+<tr>
+<td>ALLOTROPE_CLOSE</td>
+<td><code>#end</code></td>
+<td>Closes injection</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="3-grammar-simplified-bnf">3. Grammar (Simplified BNF)</h2>
+<pre><code>file         := &quot;carbonjava&quot; NEWLINE statement*
+
+statement    := add_block
+              | on_block
+              | if_block
+              | loop_block
+              | assignment
+              | run_stmt
+              | cmd_stmt
+              | allotrope_block
+              | input_decl
+
+add_block    := &quot;add&quot; BLOCK_TYPE NEWLINE property* statement* &quot;end&quot;
+
+property     := IDENTIFIER &quot;(&quot; value &quot;)&quot; NEWLINE
+              | &quot;property&quot; IDENTIFIER &quot;(&quot; value &quot;)&quot; NEWLINE
+
+on_block     := &quot;on&quot; &quot;(&quot; IDENTIFIER &quot;)&quot; NEWLINE (condition_line)* run_stmt NEWLINE
+
+condition_line := (&quot;if&quot; | &quot;anif&quot;) [&quot;not&quot;] &quot;(&quot; expr &quot;)&quot; [&quot;or&quot; &quot;(&quot; expr &quot;)&quot;] NEWLINE
+
+run_stmt     := &quot;run&quot; &quot;(&quot; path [&quot;,&quot; expr] &quot;)&quot; [&quot;and&quot; &quot;(&quot; path &quot;)&quot;]* NEWLINE
+
+cmd_stmt     := &quot;cmd&quot; &quot;(&quot; STRING_WITH_SUBSTITUTIONS &quot;)&quot; NEWLINE
+                STRING_WITH_SUBSTITUTIONS := quoted string containing zero or more &quot;{&quot; expr &quot;}&quot; blocks
+
+if_block     := condition_line+ run_stmt [NEWLINE &quot;else&quot; NEWLINE run_stmt]
+
+loop_block   := &quot;loop&quot; [&quot;(&quot; INTEGER &quot;)&quot;] NEWLINE statement* &quot;end&quot;
+
+assignment   := IDENTIFIER &quot;=&quot; expr NEWLINE
+              | SELECTOR &quot;=&quot; expr NEWLINE
+              | SELECTOR AUGMENTED_ASSIGN expr NEWLINE
+
+expr         := value (OP value)*
+
+value        := INTEGER | FLOAT | STRING | BOOLEAN | IDENTIFIER
+              | NS_IDENTIFIER | SELECTOR | &quot;nearest_entity&quot;
+              | &quot;target_entity&quot; | &quot;null&quot;
+
+input_decl   := &quot;input&quot; &quot;(&quot; IDENTIFIER &quot;:&quot; type_name &quot;)&quot; NEWLINE
+
+type_name    := &quot;string&quot; | &quot;integer&quot; | &quot;float&quot; | &quot;boolean&quot; | &quot;selector&quot;
+
+path         := IDENTIFIER (&quot;/&quot; IDENTIFIER)* &quot;.cj&quot;
+
+allotrope_block := &quot;allotrope&quot; &quot;(&quot; &quot;#&quot; IDENTIFIER &quot;.java&quot; &quot;)&quot; NEWLINE
+                   (&quot;#at&quot; injection_point NEWLINE java_code &quot;#end&quot; NEWLINE)+
+                   &quot;end&quot;
+
+injection_point := &quot;HEAD&quot; | &quot;TAIL&quot; | &quot;RETURN&quot; | &quot;INVOKE&quot; [&quot;(&quot; NS_IDENTIFIER &quot;)&quot;]
+                 | &quot;FIELD&quot; | &quot;NEW&quot; | &quot;JUMP&quot; | &quot;THROW&quot; | &quot;SHIFT&quot; | &quot;SLICE&quot; | &quot;ON&quot;
+</code></pre>
+<hr />
+<h2 id="4-type-inference-rules">4. Type Inference Rules</h2>
+<p>The compiler infers types at assignment time. No type annotations are visible to the user.</p>
+<table>
+<thead>
+<tr>
+<th>Value pattern</th>
+<th>Inferred type</th>
+<th>JVM type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Integer literal</td>
+<td><code>int</code></td>
+<td><code>int</code></td>
+</tr>
+<tr>
+<td>Float literal</td>
+<td><code>float</code></td>
+<td><code>double</code></td>
+</tr>
+<tr>
+<td>String literal</td>
+<td><code>string</code></td>
+<td><code>java.lang.String</code></td>
+</tr>
+<tr>
+<td><code>nearest_entity</code>, <code>target_entity</code>, <code>#p</code>, <code>#s</code></td>
+<td><code>entity</code></td>
+<td><code>net.minecraft.entity.Entity</code></td>
+</tr>
+<tr>
+<td><code>true</code> / <code>false</code></td>
+<td><code>boolean</code></td>
+<td><code>boolean</code></td>
+</tr>
+<tr>
+<td>Variable reference</td>
+<td>Inherits from source variable</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="5-persistent-data-prefixes">5. Persistent Data Prefixes</h2>
+<table>
+<thead>
+<tr>
+<th>Prefix</th>
+<th>Scope</th>
+<th>Storage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>#p.</code></td>
+<td>Per player</td>
+<td><code>PlayerEntity</code> NBT</td>
+</tr>
+<tr>
+<td><code>#a.</code></td>
+<td>All players</td>
+<td>Broadcast to all <code>PlayerEntity</code> instances</td>
+</tr>
+<tr>
+<td><code>#e.</code></td>
+<td>Per entity</td>
+<td><code>Entity</code> NBT</td>
+</tr>
+<tr>
+<td><code>#b.</code></td>
+<td>Per block</td>
+<td><code>BlockEntity</code> NBT</td>
+</tr>
+<tr>
+<td><code>#w.</code></td>
+<td>Per world</td>
+<td><code>PersistentState</code> on <code>ServerWorld</code></td>
+</tr>
+<tr>
+<td><code>#mod.</code></td>
+<td>Global to mod</td>
+<td><code>PersistentState</code> on server</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="6-run-semantics">6. <code>run</code> Semantics</h2>
+<ul>
+<li><code>run (script.cj)</code> — Compiles and executes script. Next line waits for completion.</li>
+<li><code>run (a.cj) and (b.cj)</code> — Executes both scripts concurrently via separate threads. The next <code>run</code> after this line waits for both to finish.</li>
+<li>Arguments passed via <code>run (script.cj, arg1, arg2)</code> are matched to <code>input</code> declarations in order.</li>
+</ul>
+<hr />
+<h2 id="7-add-block-types-and-required-properties">7. <code>add</code> Block Types and Required Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Block Type</th>
+<th>Required Properties</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>item</code></td>
+<td><code>name</code>, <code>type</code></td>
+</tr>
+<tr>
+<td><code>mob</code></td>
+<td><code>name</code>, <code>health</code>, <code>damage</code>, <code>hostility</code></td>
+</tr>
+<tr>
+<td><code>block</code></td>
+<td><code>name</code></td>
+</tr>
+<tr>
+<td><code>command</code></td>
+<td><code>name</code>, <code>permission</code>, <code>execute</code> + at least one <code>run</code></td>
+</tr>
+<tr>
+<td><code>effect</code></td>
+<td><code>name</code>, <code>levels</code>, <code>run</code></td>
+</tr>
+<tr>
+<td><code>action</code></td>
+<td>At least one action line</td>
+</tr>
+<tr>
+<td><code>behaviour</code></td>
+<td>At least one goal or <code>trigger</code> + <code>action</code></td>
+</tr>
+<tr>
+<td><code>drops</code></td>
+<td>At least one <code>drop</code> line</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="8-error-reporting-format">8. Error Reporting Format</h2>
+<p>All errors are reported to the Carbon Loader console and the in-game chat (if the game is running) in this format:</p>
+<pre><code>[Carbon] Error in &lt;file_path&gt; line &lt;N&gt;:
+  &lt;message&gt;. &lt;suggestion if available&gt;
+</code></pre>
+<p>The compiler must:
+1. Report the exact file path relative to the mod zip root.
+2. Report the exact line number (1-indexed).
+3. Provide a human-readable message in plain English.
+4. Where the error is a typo, run Levenshtein distance against the valid keyword list and suggest the closest match if distance ≤ 2.
+5. Continue parsing after errors where possible to collect all errors in one pass.
+6. On any error, do NOT load the mod. Report all collected errors then abort.</p>
+<hr />
+<h2 id="9-mod-zip-loading-sequence">9. Mod Zip Loading Sequence</h2>
+<ol>
+<li>Locate and validate <code>carbon.mod.json</code> — abort if missing or malformed.</li>
+<li>Check <code>minecraft_version</code> matches current game version — warn if mismatch, abort if major version differs.</li>
+<li>Check <code>dependencies</code> are all loaded — abort with list of missing deps if not.</li>
+<li>Unzip to a temp directory under Carbon's working folder.</li>
+<li>Load <code>resources/</code> — register textures, models, and sounds with Minecraft's resource system.</li>
+<li>Scan and lex all <code>.cj</code> files under <code>src/</code>.</li>
+<li>Parse and compile all <code>.cj</code> files via ASM. Collect all errors. If any errors exist, abort and report.</li>
+<li>Register all compiled <code>add item</code>, <code>add block</code>, <code>add mob</code>, etc. with Fabric's registry.</li>
+<li>Register all <code>add command</code> blocks with the server command dispatcher.</li>
+<li>Attach all <code>on (event)</code> handlers to the relevant Fabric event buses.</li>
+<li>Report successful load to the console: <code>[Carbon] Loaded mod: &lt;name&gt; v&lt;version&gt;</code></li>
+</ol>
+<hr />
+<h2 id="10-hot-reload-sequence">10. Hot-Reload Sequence</h2>
+<p>When a mod zip is modified while the game is running:</p>
+<ol>
+<li>Detect file change via watcher on the mods directory.</li>
+<li>Deregister all items, blocks, mobs, commands, and event handlers from the current version.</li>
+<li>Unload the compiled classes from the classloader.</li>
+<li>Re-run the full loading sequence (steps 1–11 above).</li>
+<li>Report result: <code>[Carbon] Hot-reloaded: &lt;name&gt;</code> or list of errors.</li>
+</ol>
+<hr />
+<h2 id="11-sandboxing-rules">11. Sandboxing Rules</h2>
+<p>ASM-generated bytecode must not reference:
+- <code>java.lang.System</code> (exit, in, out)
+- <code>java.io.*</code> (file system access outside the mod zip's resource folder)
+- <code>java.lang.reflect.*</code>
+- <code>java.net.*</code>
+- <code>sun.*</code> or <code>com.sun.*</code>
+- Carbon Loader internal classes (<code>carbonloader.*</code>, <code>allotrope.*</code>) — except via the sanctioned <code>carbon.*</code> API</p>
+<p>Any attempt to reference these should be caught at compile time and reported as an error.</p>
+<hr />
+<h2 id="12-compilation-pipeline-option-b-transpile-to-java">12. Compilation Pipeline (Option B — Transpile to Java)</h2>
+<p>Carbon Lang uses a transpile-then-compile approach. <code>.cj</code> files are never directly converted to bytecode. Instead they go through a pipeline: <code>.cj</code> → token list → AST → <code>.java</code> source → <code>.class</code> bytecode → live JVM class.</p>
+<p>This makes the compiler easier to build, easier to debug, and produces readable intermediate output at every step.</p>
+<hr />
+<h3 id="step-1-lexer">Step 1 — Lexer</h3>
+<p><strong>Class:</strong> <code>CarbonLexer</code>
+<strong>Input:</strong> Raw <code>.cj</code> file as a String
+<strong>Output:</strong> <code>List&lt;Token&gt;</code></p>
+<p>The lexer reads the file character by character and emits a flat list of typed tokens. It strips comments (everything after <code>@</code> to end of line) before tokenising.</p>
+<p><strong>Token enum — all valid types:</strong></p>
+<pre><code class="language-java">public enum TokenType {
+    HEADER,           // &quot;carbonjava&quot;
+    KEYWORD_ADD,      // &quot;add&quot;
+    KEYWORD_END,      // &quot;end&quot;
+    KEYWORD_ON,       // &quot;on&quot;
+    KEYWORD_RUN,      // &quot;run&quot;
+    KEYWORD_IF,       // &quot;if&quot;
+    KEYWORD_ANIF,     // &quot;anif&quot;
+    KEYWORD_ELSE,     // &quot;else&quot;
+    KEYWORD_NOT,      // &quot;not&quot;
+    KEYWORD_OR,       // &quot;or&quot;
+    KEYWORD_AND,      // &quot;and&quot;
+    KEYWORD_LOOP,     // &quot;loop&quot;
+    KEYWORD_STOP,     // &quot;stop&quot;
+    KEYWORD_INPUT,    // &quot;input&quot;
+    KEYWORD_MODIFIER, // &quot;modifier&quot;
+    KEYWORD_TRIGGER,  // &quot;trigger&quot;
+    KEYWORD_ACTION,   // &quot;action&quot;
+    KEYWORD_COPY,     // &quot;copy&quot;
+    KEYWORD_EXECUTE,  // &quot;execute&quot;
+    KEYWORD_ARGUMENT, // &quot;argument&quot;
+    KEYWORD_CMD,      // &quot;cmd&quot;
+    KEYWORD_FIRE,     // &quot;fire&quot;
+    KEYWORD_EFFECT,   // &quot;effect&quot;
+    KEYWORD_DAMAGE,   // &quot;damage&quot;
+    KEYWORD_PLAYSOUND,// &quot;playsound&quot;
+    KEYWORD_TELEPORT, // &quot;teleport&quot;
+    KEYWORD_SPAWN,    // &quot;spawn&quot;
+    KEYWORD_DROP,     // &quot;drop&quot;
+    KEYWORD_RECIPE,   // &quot;recipe&quot;
+    KEYWORD_PROPERTY, // &quot;property&quot;
+    KEYWORD_TIER,     // &quot;tier&quot;
+    KEYWORD_MATERIAL, // &quot;material&quot;
+    BLOCK_TYPE,       // item, mob, block, command, effect, action, behaviour, drops
+    IDENTIFIER,       // any lowercase_underscore word
+    NS_IDENTIFIER,    // namespace:name
+    SELECTOR,         // #p, #s, #a, #e, #w, #mod, #b
+    SELECTOR_DOT,     // #p.clicks etc
+    STRING,           // &quot;quoted text&quot;
+    INTEGER,          // 123
+    FLOAT,            // 1.5
+    BOOLEAN,          // true / false
+    LPAREN,           // (
+    RPAREN,           // )
+    EQUALS,           // =
+    AUG_ASSIGN,       // +=  -=  *=  /=
+    OPERATOR,         // + - * / &lt; &gt; &lt;= &gt;=
+    COLON,            // :
+    COMMA,            // ,
+    NEWLINE,
+    EOF
+}
+</code></pre>
+<p>Each token carries: <code>TokenType type</code>, <code>String value</code>, <code>int line</code>.</p>
+<p><strong>Lexer rules:</strong>
+- <code>carbonjava</code> on line 1 → <code>HEADER</code>. If not present, emit an error and stop.
+- <code>@</code> → discard everything to end of line.
+- Words are matched against the keyword list first, then BLOCK_TYPE list, then fall through to IDENTIFIER.
+- <code>namespace:name</code> pattern → NS_IDENTIFIER.
+- <code>#p</code>, <code>#s</code>, <code>#a</code>, <code>#e</code>, <code>#w</code>, <code>#b</code>, <code>#mod</code> → SELECTOR. If followed by <code>.identifier</code> → SELECTOR_DOT.
+- Quoted strings → STRING (strip quotes from value).
+- Digits with <code>.</code> → FLOAT. Digits only → INTEGER.
+- <code>+=</code>, <code>-=</code>, <code>*=</code>, <code>/=</code> → AUG_ASSIGN (check two chars before single char operators).
+- Blank lines are significant — emit NEWLINE for each line break.</p>
+<hr />
+<h3 id="step-2-ast-node-classes">Step 2 — AST Node Classes</h3>
+<p>One Java class per node type. All extend a base <code>AstNode</code> that carries <code>int line</code>.</p>
+<pre><code class="language-java">abstract class AstNode { int line; }
+
+class FileNode extends AstNode {
+    List&lt;AstNode&gt; statements;
+}
+
+class AddBlockNode extends AstNode {
+    String blockType;           // &quot;item&quot;, &quot;mob&quot;, &quot;block&quot;, etc.
+    List&lt;AstNode&gt; children;     // properties, on-blocks, nested add-blocks
+}
+
+class PropertyNode extends AstNode {
+    String key;
+    Object value;               // String, Integer, Double, Boolean
+}
+
+class OnEventNode extends AstNode {
+    String event;
+    List&lt;ConditionNode&gt; conditions;
+    RunNode run;
+}
+
+class ConditionNode extends AstNode {
+    boolean negated;            // true if &quot;not&quot;
+    boolean isAnd;              // true if &quot;anif&quot;, false if &quot;if&quot; or &quot;or&quot;
+    ExprNode expr;
+}
+
+class RunNode extends AstNode {
+    List&lt;String&gt; paths;         // supports &quot;and&quot; — multiple paths
+    List&lt;ExprNode&gt; args;
+}
+
+class CmdNode extends AstNode {
+    String raw;                 // the full quoted string as written
+    List&lt;Object&gt; parts;         // pre-parsed at compile time: mix of plain strings and ExprNodes
+}
+
+class IfNode extends AstNode {
+    List&lt;ConditionNode&gt; conditions;
+    RunNode thenRun;
+    RunNode elseRun;            // null if no else
+}
+
+class LoopNode extends AstNode {
+    ExprNode count;             // null = infinite (every tick)
+    List&lt;AstNode&gt; body;
+}
+
+class AssignmentNode extends AstNode {
+    String target;              // variable name or selector
+    String operator;            // &quot;=&quot;, &quot;+=&quot;, &quot;-=&quot;, &quot;*=&quot;, &quot;/=&quot;
+    ExprNode value;
+}
+
+class ExprNode extends AstNode {
+    Object left;                // value or nested ExprNode
+    String operator;            // null if no operation
+    Object right;               // null if no operation
+}
+
+class InputDeclNode extends AstNode {
+    String name;
+    String type;                // &quot;string&quot;, &quot;integer&quot;, &quot;float&quot;, &quot;boolean&quot;, &quot;selector&quot;
+}
+
+class ActionLineNode extends AstNode {
+    String action;              // &quot;effect&quot;, &quot;fire&quot;, &quot;playsound&quot;, &quot;spawn&quot;, &quot;damage&quot;, &quot;teleport&quot;
+    List&lt;Object&gt; args;
+}
+
+class ModifierNode extends AstNode {
+    String target;
+    String operation;           // &quot;+&quot;, &quot;-&quot;, &quot;*&quot;, &quot;/&quot;, or plain value
+    Object value;
+}
+
+class TriggerNode extends AstNode {
+    ExprNode condition;
+    List&lt;AstNode&gt; actions;
+}
+
+class BehaviourNode extends AstNode {
+    List&lt;String&gt; goals;         // &quot;wander&quot;, &quot;panic&quot;, etc.
+    TriggerNode trigger;        // null if no trigger
+}
+
+class DropsNode extends AstNode {
+    List&lt;DropEntryNode&gt; drops;
+}
+
+class DropEntryNode extends AstNode {
+    String item;
+    double chance;
+    int min;
+    int max;
+}
+
+class AllotropeNode extends AstNode {
+    String targetClass;
+    List&lt;AllotropeInjectionNode&gt; injections;
+}
+
+class AllotropeInjectionNode extends AstNode {
+    String point;               // HEAD, TAIL, RETURN, etc.
+    String pointArg;            // for INVOKE(method), FIELD(name), etc.
+    String javaCode;            // raw Java between #at and #end
+}
+</code></pre>
+<hr />
+<h3 id="step-3-parser">Step 3 — Parser</h3>
+<p><strong>Class:</strong> <code>CarbonParser</code>
+<strong>Input:</strong> <code>List&lt;Token&gt;</code>
+<strong>Output:</strong> <code>FileNode</code></p>
+<p>The parser is a recursive descent parser. It reads tokens one at a time and builds the AST.</p>
+<p><strong>Key parsing rules:</strong></p>
+<ul>
+<li>Consume <code>HEADER</code> first. If missing → error.</li>
+<li><code>add BLOCK_TYPE</code> → parse an <code>AddBlockNode</code>. Recurse for nested <code>add</code> blocks. Consume <code>end</code> to close.</li>
+<li><code>on (event)</code> → parse an <code>OnEventNode</code>. Read any following <code>if</code>/<code>anif</code> lines, then the <code>run</code> line. A blank line (double NEWLINE) terminates the on-block.</li>
+<li><code>if</code>/<code>anif</code> lines before a <code>run</code> → build a list of <code>ConditionNode</code>. The <code>run</code> becomes an <code>IfNode</code>.</li>
+<li><code>loop (N)</code> or <code>loop</code> → parse a <code>LoopNode</code>. Recurse body until <code>end</code>.</li>
+<li><code>IDENTIFIER = expr</code> or <code>SELECTOR = expr</code> → <code>AssignmentNode</code>.</li>
+<li><code>SELECTOR AUG_ASSIGN expr</code> → <code>AssignmentNode</code> with compound operator.</li>
+<li><code>input (name : type)</code> → <code>InputDeclNode</code>.</li>
+<li><code>allotrope (#Class.java)</code> → parse <code>AllotropeNode</code>. Read <code>#at POINT</code> ... <code>#end</code> blocks until <code>end</code>.</li>
+<li><code>add behaviour</code> → parse <code>BehaviourNode</code>. Goals are bare keywords. <code>trigger (expr)</code> starts a trigger section.</li>
+<li><code>add drops</code> → parse <code>DropsNode</code>. Each <code>drop (item, chance, min, max)</code> → <code>DropEntryNode</code>.</li>
+</ul>
+<p><strong>Error collection:</strong>
+- Parser must NOT throw on first error. Use a <code>List&lt;CarbonError&gt;</code> collector.
+- On an unexpected token, record the error, then skip tokens until a known recovery point (<code>end</code>, <code>add</code>, <code>on</code>, newline) and continue.
+- After full parse, if <code>errors</code> is non-empty → abort compilation and report all errors.</p>
+<p><strong>CarbonError format:</strong></p>
+<pre><code class="language-java">class CarbonError {
+    String filePath;
+    int line;
+    String message;
+    String suggestion;  // null if no suggestion available
+}
+</code></pre>
+<p>Suggestion generation: for unrecognised IDENTIFIER tokens in keyword positions, run Levenshtein distance against the full keyword list. If closest match has distance ≤ 2, set suggestion to <code>"Did you mean \"" + closest + "\"?"</code>.</p>
+<hr />
+<h3 id="step-4-transpiler">Step 4 — Transpiler</h3>
+<p><strong>Class:</strong> <code>CarbonTranspiler</code>
+<strong>Input:</strong> <code>FileNode</code>
+<strong>Output:</strong> A <code>.java</code> source file as a String</p>
+<p>The transpiler walks the AST and emits Java source code that calls the Carbon API (see Step 6).</p>
+<p><strong>Output class structure:</strong></p>
+<pre><code class="language-java">public class Carbon_&lt;modid&gt;_&lt;scriptname&gt; implements CarbonScript {
+    @Override
+    public void register(CarbonRegistry registry) {
+        // generated registration code
+    }
+
+    @Override
+    public void attachEvents(CarbonEventBus events) {
+        // generated event handler code
+    }
+}
+</code></pre>
+<p><strong>Mapping rules — AST node to Java output:</strong></p>
+<table>
+<thead>
+<tr>
+<th>AST Node</th>
+<th>Java output</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>AddBlockNode(item)</code></td>
+<td><code>registry.registerItem(new CarbonItemBuilder()...build())</code></td>
+</tr>
+<tr>
+<td><code>AddBlockNode(mob)</code></td>
+<td><code>registry.registerMob(new CarbonMobBuilder()...build())</code></td>
+</tr>
+<tr>
+<td><code>AddBlockNode(block)</code></td>
+<td><code>registry.registerBlock(new CarbonBlockBuilder()...build())</code></td>
+</tr>
+<tr>
+<td><code>AddBlockNode(command)</code></td>
+<td><code>registry.registerCommand(new CarbonCommandBuilder()...build())</code></td>
+</tr>
+<tr>
+<td><code>AddBlockNode(effect)</code></td>
+<td><code>registry.registerEffect(new CarbonEffectBuilder()...build())</code></td>
+</tr>
+<tr>
+<td><code>PropertyNode</code></td>
+<td><code>.propertyName(value)</code> on the enclosing builder</td>
+</tr>
+<tr>
+<td><code>OnEventNode</code></td>
+<td><code>events.on(EventType.X, (ctx) -&gt; { ... })</code></td>
+</tr>
+<tr>
+<td><code>RunNode</code></td>
+<td><code>CarbonRuntime.run("path", args)</code></td>
+</tr>
+<tr>
+<td><code>CmdNode</code></td>
+<td><code>CarbonActions.runCommand(server, commandString)</code></td>
+</tr>
+<tr>
+<td><code>IfNode</code></td>
+<td>Standard Java <code>if</code> / <code>else</code></td>
+</tr>
+<tr>
+<td><code>LoopNode(count)</code></td>
+<td><code>for (int i = 0; i &lt; N; i++)</code></td>
+</tr>
+<tr>
+<td><code>LoopNode(null)</code></td>
+<td><code>events.onTick((ctx) -&gt; { ... })</code></td>
+</tr>
+<tr>
+<td><code>AssignmentNode</code></td>
+<td>Java variable declaration or assignment</td>
+</tr>
+<tr>
+<td><code>ActionLineNode(effect)</code></td>
+<td><code>CarbonActions.applyEffect(target, effectId, level, duration)</code></td>
+</tr>
+<tr>
+<td><code>ActionLineNode(fire)</code></td>
+<td><code>CarbonActions.fireProjectile(projectileId, modifiers)</code></td>
+</tr>
+<tr>
+<td><code>ActionLineNode(playsound)</code></td>
+<td><code>CarbonActions.playSound(soundPath)</code></td>
+</tr>
+<tr>
+<td><code>ActionLineNode(spawn)</code></td>
+<td><code>CarbonActions.spawnMob(mobId, location)</code></td>
+</tr>
+<tr>
+<td><code>ActionLineNode(damage)</code></td>
+<td><code>CarbonActions.damage(target, amount)</code></td>
+</tr>
+<tr>
+<td><code>ActionLineNode(teleport)</code></td>
+<td><code>CarbonActions.teleport(entity, destination)</code></td>
+</tr>
+<tr>
+<td><code>DropsNode</code></td>
+<td><code>.drops(new CarbonDropTable()...build())</code> on mob builder</td>
+</tr>
+<tr>
+<td><code>BehaviourNode</code></td>
+<td><code>.behaviour(new CarbonBehaviourBuilder()...build())</code> on mob builder</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Type inference at transpile time:</strong>
+- Integer literal → <code>int</code>
+- Float literal → <code>double</code>
+- String literal → <code>String</code>
+- <code>nearest_entity</code>, <code>#p</code>, <code>#s</code>, <code>target_entity</code> → <code>Entity</code>
+- Variable that was assigned an Entity → <code>Entity</code>
+- All others → infer from first assignment, carry type through subsequent uses</p>
+<p><strong>Selector mapping:</strong>
+| Carbon selector | Java |
+|----------------|------|
+| <code>#p</code> | <code>ctx.getPlayer()</code> |
+| <code>#s</code> | <code>ctx.getSelf()</code> |
+| <code>#a</code> | <code>ctx.getAllPlayers()</code> |
+| <code>nearest_entity</code> | <code>ctx.getNearestEntity()</code> |
+| <code>target_entity</code> | <code>ctx.getTarget()</code> |
+| <code>#p.field</code> | <code>CarbonPersistence.getPlayer(ctx.getPlayer(), "field")</code> |
+| <code>#w.field</code> | <code>CarbonPersistence.getWorld("field")</code> |
+| <code>#mod.field</code> | <code>CarbonPersistence.getMod("field")</code> |</p>
+<hr />
+<h3 id="step-5-runtime-compiler">Step 5 — Runtime Compiler</h3>
+<p><strong>Class:</strong> <code>CarbonLangCompiler</code>
+<strong>Input:</strong> <code>.java</code> source file path
+<strong>Output:</strong> <code>.class</code> bytecode file</p>
+<p>Uses <code>javax.tools.JavaCompiler</code> which is built into the JDK. The Minecraft classpath and Carbon Lib classpath must be on the compiler's classpath so the generated code can reference them.</p>
+<pre><code class="language-java">public class CarbonLangCompiler {
+    public boolean compile(Path javaFile, Path outputDir, List&lt;Path&gt; classpath) {
+        JavaCompiler compiler = ToolProvider.getSystemJavaCompiler();
+        StandardJavaFileManager fm = compiler.getStandardFileManager(null, null, null);
+
+        fm.setLocation(StandardLocation.CLASS_OUTPUT, List.of(outputDir.toFile()));
+        fm.setLocation(StandardLocation.CLASS_PATH, classpath.stream()
+            .map(Path::toFile).toList());
+
+        Iterable&lt;? extends JavaFileObject&gt; units =
+            fm.getJavaFileObjects(javaFile.toFile());
+
+        DiagnosticCollector&lt;JavaFileObject&gt; diagnostics = new DiagnosticCollector&lt;&gt;();
+        boolean success = compiler.getTask(null, fm, diagnostics, null, null, units).call();
+
+        if (!success) {
+            // translate javac errors back into CarbonError format
+            // map line numbers back to original .cj file using line map from transpiler
+        }
+        return success;
+    }
+}
+</code></pre>
+<p>The transpiler must emit <code>// CJ_LINE:&lt;N&gt;</code> comments in the generated Java so that javac errors can be mapped back to the original <code>.cj</code> line numbers for user-facing error messages.</p>
+<hr />
+<h3 id="step-6-carbon-api-carbon-lib">Step 6 — Carbon API (Carbon Lib)</h3>
+<p>This is the Fabric mod (<code>carbon-lib</code>) that the transpiler's output calls into. It provides a clean Java API so the transpiler never needs to emit raw Fabric or Minecraft API calls directly.</p>
+<p><strong>Required classes in Carbon Lib:</strong></p>
+<pre><code>CarbonScript          interface — register() + attachEvents()
+CarbonRegistry        wraps Fabric Registry
+CarbonEventBus        wraps Fabric event buses
+CarbonRuntime         handles run(), hot-reload, script loading
+CarbonContext         passed to event handlers — getPlayer(), getSelf(), getTarget(), etc.
+CarbonPersistence     handles #p. #w. #mod. #e. #b. persistent data via NBT / PersistentState
+CarbonActions         static methods — applyEffect(), fireProjectile(), playSound(), etc.
+CarbonItemBuilder     builder for items
+CarbonMobBuilder      builder for mobs
+CarbonBlockBuilder    builder for blocks
+CarbonCommandBuilder  builder for commands
+CarbonEffectBuilder   builder for custom effects
+CarbonBehaviourBuilder builder for mob AI
+CarbonDropTable       builder for mob drop tables
+</code></pre>
+<p>Each builder maps directly to the properties defined in the language spec. Every property in section 7 of this spec must have a corresponding builder method.</p>
+<hr />
+<h3 id="step-7-class-loader">Step 7 — Class Loader</h3>
+<p><strong>Class:</strong> <code>CarbonClassLoader</code></p>
+<p>Loads the compiled <code>.class</code> files into the JVM at runtime. Uses a child-first <code>URLClassLoader</code> so mod classes are isolated from each other.</p>
+<pre><code class="language-java">public class CarbonClassLoader {
+    private URLClassLoader loader;
+
+    public CarbonScript load(Path classDir, String className) throws Exception {
+        loader = new URLClassLoader(
+            new URL[]{classDir.toUri().toURL()},
+            CarbonClassLoader.class.getClassLoader()
+        );
+        Class&lt;?&gt; cls = loader.loadClass(className);
+        return (CarbonScript) cls.getDeclaredConstructor().newInstance();
+    }
+
+    public void unload() throws Exception {
+        if (loader != null) loader.close();
+    }
+}
+</code></pre>
+<p><code>unload()</code> is called during hot-reload before recompiling.</p>
+<hr />
+<h3 id="step-8-hot-reload-watcher">Step 8 — Hot-Reload Watcher</h3>
+<p><strong>Class:</strong> <code>CarbonWatcher</code></p>
+<p>Watches the mods directory for changes to <code>.zip</code> files using Java's <code>WatchService</code>. When a change is detected:</p>
+<ol>
+<li>Call <code>CarbonClassLoader.unload()</code> for the affected mod.</li>
+<li>Deregister all items, mobs, blocks, commands, and event handlers registered by that mod.</li>
+<li>Re-run the full pipeline (Steps 1–7) for the changed zip.</li>
+<li>Re-register everything.</li>
+<li>Report result to console: <code>[Carbon] Hot-reloaded: &lt;modid&gt;</code> or list errors.</li>
+</ol>
+<p>Hot-reload must not crash the game. Wrap the entire reload sequence in a try-catch. On failure, leave the previous version loaded and report the error.</p>
+<hr />
+<h3 id="full-build-order-for-the-coding-agent">Full Build Order for the Coding Agent</h3>
+<p>Build and test in this order. Each step can be unit tested independently before moving to the next.</p>
+<table>
+<thead>
+<tr>
+<th>Order</th>
+<th>Class</th>
+<th>Depends on</th>
+<th>Can test without Minecraft?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><code>TokenType</code> enum</td>
+<td>nothing</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>CarbonLexer</code></td>
+<td>TokenType</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>3</td>
+<td>AST node classes</td>
+<td>nothing</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>CarbonParser</code></td>
+<td>Lexer + AST nodes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>5</td>
+<td><code>CarbonError</code> + suggestion engine</td>
+<td>nothing</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>6</td>
+<td><code>CarbonScript</code> interface</td>
+<td>nothing</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>7</td>
+<td><code>Carbon*Builder</code> classes</td>
+<td>Fabric API</td>
+<td>No — needs Fabric</td>
+</tr>
+<tr>
+<td>8</td>
+<td><code>CarbonRegistry</code></td>
+<td>Fabric API</td>
+<td>No</td>
+</tr>
+<tr>
+<td>9</td>
+<td><code>CarbonEventBus</code></td>
+<td>Fabric API</td>
+<td>No</td>
+</tr>
+<tr>
+<td>10</td>
+<td><code>CarbonContext</code></td>
+<td>Fabric API</td>
+<td>No</td>
+</tr>
+<tr>
+<td>11</td>
+<td><code>CarbonPersistence</code></td>
+<td>Fabric API</td>
+<td>No</td>
+</tr>
+<tr>
+<td>12</td>
+<td><code>CarbonActions</code></td>
+<td>Fabric API</td>
+<td>No</td>
+</tr>
+<tr>
+<td>13</td>
+<td><code>CarbonTranspiler</code></td>
+<td>Parser + Builder classes</td>
+<td>Yes (mock builders)</td>
+</tr>
+<tr>
+<td>14</td>
+<td><code>CarbonLangCompiler</code></td>
+<td>javax.tools</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>15</td>
+<td><code>CarbonClassLoader</code></td>
+<td>compiled classes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>16</td>
+<td><code>CarbonRuntime</code></td>
+<td>all of the above</td>
+<td>No</td>
+</tr>
+<tr>
+<td>17</td>
+<td><code>CarbonWatcher</code></td>
+<td>CarbonRuntime</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="13-extended-variable-and-selector-system">13. Extended Variable and Selector System</h2>
+<h3 id="131-writing-persistent-data-to-a-specific-player">13.1 Writing Persistent Data to a Specific Player</h3>
+<p>To write persistent data to a player other than the current player (<code>#p</code>), use the <code>#player(variable)</code> syntax:</p>
+<pre><code>#player(target).field = value
+</code></pre>
+<p>Where <code>target</code> is any variable or selector holding an entity reference. This emits a call to <code>CarbonPersistence.setPlayer(target, "field", value)</code> in the transpiler.</p>
+<p>Grammar addition:</p>
+<pre><code>SELECTOR_PLAYER := &quot;#player&quot; &quot;(&quot; expr &quot;)&quot; &quot;.&quot; IDENTIFIER
+</code></pre>
+<p>This is valid on both the left and right side of an assignment.</p>
+<hr />
+<h3 id="132-built-in-read-only-player-properties">13.2 Built-in Read-Only Player Properties</h3>
+<p>The following <code>#p.</code> properties are built-in and read-only. Attempting to assign to them is a compile-time error.</p>
+<p><strong>Player (<code>#p.</code> or <code>#player(var).</code>):</strong></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name</code></td>
+<td>string</td>
+<td>Player's username</td>
+</tr>
+<tr>
+<td><code>uuid</code></td>
+<td>string</td>
+<td>Player's UUID</td>
+</tr>
+<tr>
+<td><code>health</code></td>
+<td>float</td>
+<td>Current health points</td>
+</tr>
+<tr>
+<td><code>max_health</code></td>
+<td>float</td>
+<td>Maximum health points</td>
+</tr>
+<tr>
+<td><code>hunger</code></td>
+<td>integer</td>
+<td>Current hunger level (0–20)</td>
+</tr>
+<tr>
+<td><code>position</code></td>
+<td>position</td>
+<td>Current XYZ coordinates</td>
+</tr>
+<tr>
+<td><code>dimension</code></td>
+<td>string</td>
+<td>Current dimension: <code>overworld</code>, <code>nether</code>, <code>end</code></td>
+</tr>
+<tr>
+<td><code>gamemode</code></td>
+<td>string</td>
+<td><code>survival</code>, <code>creative</code>, <code>adventure</code>, <code>spectator</code></td>
+</tr>
+<tr>
+<td><code>xp_level</code></td>
+<td>integer</td>
+<td>Current XP level</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Entity (<code>#s.</code>):</strong></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name</code></td>
+<td>string</td>
+<td>Entity type name</td>
+</tr>
+<tr>
+<td><code>health</code></td>
+<td>float</td>
+<td>Current health</td>
+</tr>
+<tr>
+<td><code>max_health</code></td>
+<td>float</td>
+<td>Maximum health</td>
+</tr>
+<tr>
+<td><code>position</code></td>
+<td>position</td>
+<td>Current XYZ coordinates</td>
+</tr>
+</tbody>
+</table>
+<p>The transpiler maps these to the appropriate Minecraft API getters via <code>CarbonContext</code>. Any attempt to assign to a read-only property emits:</p>
+<pre><code>[Carbon] Error in &lt;file&gt; line &lt;N&gt;:
+  &quot;#p.name&quot; is read-only and cannot be assigned to.
+</code></pre>
+<hr />
+<h3 id="133-early-script-exit-exit">13.3 Early Script Exit — <code>exit</code></h3>
+<p><code>exit</code> immediately halts execution of the current script. It is valid anywhere in a script body.</p>
+<pre><code>if (#p.tpa_requester == &quot;null&quot;)
+run (scripts/no_request.cj)
+exit
+
+@ Only reached if the if condition was false
+requester = find_player (#p.tpa_requester)
+</code></pre>
+<p>Distinction from <code>stop</code>:
+- <code>stop</code> — exits the current <code>loop</code> block only. Invalid outside a loop.
+- <code>exit</code> — exits the entire script. Valid anywhere.</p>
+<p>Grammar addition:</p>
+<pre><code>exit_stmt := &quot;exit&quot; NEWLINE
+</code></pre>
+<p>Transpiler output: <code>return;</code> inside the generated method.</p>
+<hr />
+<h3 id="134-player-lookup-by-name-find_player">13.4 Player Lookup by Name — <code>find_player</code></h3>
+<p><code>find_player</code> looks up an online player by their username string and returns an entity reference, or <code>null</code> if the player is not currently online.</p>
+<pre><code>requester = find_player (#p.tpa_requester)
+
+if (requester == null)
+run (scripts/player_offline.cj)
+exit
+</code></pre>
+<p>Grammar addition:</p>
+<pre><code>find_player_expr := &quot;find_player&quot; &quot;(&quot; expr &quot;)&quot;
+</code></pre>
+<p>This is valid anywhere a value or entity expression is expected.</p>
+<p>Transpiler output: <code>CarbonActions.findPlayer(name)</code> which calls <code>server.getPlayerManager().getPlayer(name)</code> and returns <code>null</code> if not found.</p>
+<p><code>null</code> is now a valid value token and can be used in equality comparisons:</p>
+<pre><code>if (requester == null)
+</code></pre>
+<hr />
+<h2 id="14-mod-level-persistent-variables">14. Mod-Level Persistent Variables</h2>
+<h3 id="141-declaration-in-carbonmodjson">14.1 Declaration in <code>carbon.mod.json</code></h3>
+<p>Mods can declare named persistent variables that survive server restarts and are accessible from any script via <code>#mod.</code>. They are declared in <code>carbon.mod.json</code> under the <code>persistent_vars</code> key:</p>
+<pre><code class="language-json">{
+  &quot;id&quot;: &quot;ruby_mod&quot;,
+  &quot;name&quot;: &quot;Ruby Mod&quot;,
+  &quot;version&quot;: &quot;1.0.0&quot;,
+  &quot;authors&quot;: [&quot;your_name&quot;],
+  &quot;minecraft_version&quot;: &quot;1.20.1&quot;,
+  &quot;type&quot;: &quot;carbon&quot;,
+  &quot;dependencies&quot;: [],
+  &quot;persistent_vars&quot;: {
+    &quot;total_rubies_mined&quot;: &quot;integer&quot;,
+    &quot;server_boss_killed&quot;: &quot;boolean&quot;,
+    &quot;top_player&quot;: &quot;string&quot;,
+    &quot;difficulty_multiplier&quot;: &quot;float&quot;
+  }
+}
+</code></pre>
+<h3 id="142-valid-types">14.2 Valid Types</h3>
+<table>
+<thead>
+<tr>
+<th>Type in JSON</th>
+<th>JVM type</th>
+<th>Default value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>"integer"</code></td>
+<td><code>int</code></td>
+<td><code>0</code></td>
+</tr>
+<tr>
+<td><code>"float"</code></td>
+<td><code>double</code></td>
+<td><code>0.0</code></td>
+</tr>
+<tr>
+<td><code>"boolean"</code></td>
+<td><code>boolean</code></td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>"string"</code></td>
+<td><code>String</code></td>
+<td><code>""</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="143-rules">14.3 Rules</h3>
+<ul>
+<li>Carbon creates storage for every declared var at mod load time using <code>PersistentState</code> on the server.</li>
+<li>Default values are written on first load if no saved value exists.</li>
+<li>Using <code>#mod.field</code> in a script where <code>field</code> is not declared in <code>persistent_vars</code> is a <strong>compile-time error</strong>:</li>
+</ul>
+<pre><code>[Carbon] Error in src/scripts/example.cj line 4:
+  &quot;#mod.unknown_var&quot; is not declared in persistent_vars in carbon.mod.json.
+</code></pre>
+<ul>
+<li><code>#p.</code> and <code>#w.</code> fields do NOT require pre-declaration since player and world sets are dynamic.</li>
+<li><code>persistent_vars</code> is optional. Mods that don't use <code>#mod.</code> don't need it.</li>
+</ul>
+<h3 id="144-usage-in-scripts">14.4 Usage in Scripts</h3>
+<pre><code>@ Increment a global counter
+#mod.total_rubies_mined += 1
+
+@ Check a global flag
+if (#mod.server_boss_killed == false)
+run (scripts/spawn_boss.cj)
+
+@ Store a string
+#mod.top_player = #p.name
+</code></pre>
+<p>Transpiler maps all <code>#mod.field</code> reads and writes to <code>CarbonPersistence.getMod("field")</code> and <code>CarbonPersistence.setMod("field", value)</code>.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "search.suggest", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
