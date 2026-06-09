@@ -1,6 +1,6 @@
 # Carbon Lang — Documentation
 
-Welcome! This is the official documentation for **Carbon Lang** (`.cj`), the scripting language for making Minecraft mods using **Carbon Loader**.
+Welcome! This is the official documentation for **Carbon Java** (`.cj`), the scripting language for making Minecraft mods using **Carbon Loader**.
 
 You do **not** need to know Java, Gradle, or any complicated tools. If you can write a shopping list, you can write a Carbon mod.
 
